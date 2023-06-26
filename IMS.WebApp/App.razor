@@ -1,9 +1,23 @@
-﻿<CascadingAuthenticationState>
+﻿@inject NavigationManager NavigationManager
+
+<CascadingAuthenticationState>
     <Router AppAssembly="@typeof(App).Assembly">
         <Found Context="routeData">
             <AuthorizeRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)">
                 <NotAuthorized>
-                    Sorry, but you are not allowed to see this.:(
+                    <div class="container">
+                        <div class="container-box">
+                            <h1 class="text">Oops!</h1>
+                            <div class="content">
+                                <span>You are not allowed to see this page. </span>
+                                <a href="/identity/account/login">
+                                    <button>
+                                    Go to login page
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </NotAuthorized>
             </AuthorizeRouteView>
             <FocusOnNavigate RouteData="@routeData" Selector="h1" />
@@ -16,3 +30,4 @@
         </NotFound>
     </Router>
 </CascadingAuthenticationState>
+

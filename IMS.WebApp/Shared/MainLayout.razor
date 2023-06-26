@@ -4,17 +4,19 @@
 
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Inventory Management</a>
+        <a class="navbar-brand" href="home">
+            <img src="../..//Photo/Logo.jpg" />
+        </a>
         <button @onclick="@(()=>OnClickMenu("navbar-toggler"))" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="@NavMenuCssClass" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item" @onclick="@(()=>OnClickMenu("nav-item"))">
-                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+ @*               <li class="nav-item" @onclick="@(()=>OnClickMenu("nav-item"))">
+                    <NavLink class="nav-link" href="home" Match="NavLinkMatch.All">
                         <span class="oi oi-home" aria-hidden="true"></span> Home
                     </NavLink>
-                </li>
+                </li>*@
                 <li class="nav-item" @onclick="@(()=>OnClickMenu("nav-item"))">
                     <NavLink class="nav-link" href="inventories">
                         <span class="oi oi-plus" aria-hidden="true"></span> Inventories
@@ -77,13 +79,61 @@
     </div>
 </nav>
 
-<main>
-    <div class="bg-light p-5">
+
+
+<main class="body">
+    <div>
         @Body
     </div>
 </main>
 
+<footer>
+    @if (!HideFooter)
+    {
+
+        <div class="footer">
+            <div class="footer-links">
+                <a href="/home">HOME</a>
+                <a href="/inventories">Inventory</a>
+                <a href="/products">Product</a>
+                <a href="/purchase">Purchase</a>
+                <a href="/produce">Produce</a>
+                <a href="/sell">Sell</a>
+            </div>
+            <div class="about">
+                <p>
+                    This is an inventory application or that manages a company's inventory with all its transactions. In the app you can hold your transaction, like what you sell, purchase or what you produce.
+                    You also have a Report section where you can see your report about inventory or about the products, you can also print that page to keep it into your document section on your pc.
+                    The application is easy to use, flexible, and can be adapted to any company according to needs.
+                </p>
+
+                <div class="links_copyright">
+
+                    <div class="links">
+                        <a href="https://www.facebook.com">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/800px-Facebook_f_logo_%282021%29.svg.png" alt="Facebook" />
+                        </a>
+                        <a href="https://www.instagram.com">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" alt="Instagram" />
+                        </a>
+                        <a href="https://twitter.com/home?lang=ro">
+                            <img src="https://play-lh.googleusercontent.com/wIf3HtczQDjHzHuu7vezhqNs0zXAG85F7VmP7nhsTxO3OHegrVXlqIh_DWBYi86FTIGk" alt="Twitter" />
+                        </a>
+                    </div>
+                    <div class="copyright">
+                        <p>Copyright 2023. All Rights Reserved</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</footer>
+
+
+
 @code{
+    [Parameter]
+    public bool HideFooter { get; set; }
     bool collapseNavMenu = true;
     string NavMenuCssClass => "navbar-collapse" + (collapseNavMenu ? " collapse":"");
 
